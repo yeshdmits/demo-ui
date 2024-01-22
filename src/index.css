@@ -131,11 +131,32 @@ nav {
   color: #721c24;
 }
 
+.nav-items {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.button-menu {
+  display: none;
+}
+
 /* Media Query for Mobile Screens */
 @media screen and (max-width: 600px) {
   .drools-action-buttons {
     flex-direction: column;
   }
+
+  .button-menu {
+    display: block;
+    background-color: #ffedb1;
+    border: none;
+  }
+
+  .nav-items {
+    display: none;
+  }
+  
 
   .button-upload,
   .button-download,
@@ -146,8 +167,6 @@ nav {
   }
 }
 
-/* Add this to your CSS file or styles section of your React component */
-
 nav {
   display: flex;
   align-items: center;
@@ -156,11 +175,6 @@ nav {
   padding: 10px;
   border-bottom: 1px solid #ddd;
   border-radius: 0 0 5% 5%;
-}
-
-.nav-items {
-  display: flex;
-  gap: 10px;
 }
 
 .button-drools-nav {
