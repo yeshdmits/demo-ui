@@ -1,20 +1,33 @@
 import React from 'react';
 
-const DroolsHistoryTable = () => {
-    return <section id="table-container">
-    <table>
+const DroolsHistoryTable = ({history}) => {
+    return history && (
+    <section>
+    <table className='drools-history-table'>
       <thead>
       <tr>
-        <th>User ID</th>
-        <th>Modified At</th>
-        <th>Filepath</th>
-        <th>Drools type</th>
+        <th className='drools-history-head'>User ID</th>
+        <th className='drools-history-head'>Modified At</th>
+        <th className='drools-history-head'>Filepath</th>
+        <th className='drools-history-head'>Drools type</th>
       </tr>
       </thead>
-      <tbody id="table-body">
+      <tbody>
+      <tr>
+        <td className='drools-history-body'>User ID</td>
+        <td className='drools-history-body'>Modified At</td>
+        <td className='drools-history-body'>Filepath</td>
+        <td className='drools-history-body'>Drools type</td>
+      </tr>
+      <tr>
+        <td className='drools-history-body'>User ID</td>
+        <td className='drools-history-body'>Modified At</td>
+        <td className='drools-history-body'>Filepath</td>
+        <td className='drools-history-body'>Drools type</td>
+      </tr>
       </tbody>
     </table>
-  </section>
-}
+    </section>
+)};
 
 export default DroolsHistoryTable;

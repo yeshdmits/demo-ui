@@ -1,35 +1,51 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Loader from '../Loader';
+import Button from '../Button';
+import {formMapping} from '../../constants'
 
-const formMapping = Object.freeze({
-  PR_EL: 'Product Eligibility',
-  D_SA: 'Distribution Service Agreement',
-  D_SR: 'Distribution Service Role',
-  M_SA:  'Modification Service Agreement'
-});
+import { uploadDrools } from '../../service/ApiService';
+
+const handleUpload = async (event, setLoading, setSuccess, setMessage, setError) => {
+  setLoading(true)
+  let response = await uploadDrools(event.target.files[0])
+  if (response.code === 200) {
+    setSuccess(true)
+  } else {
+    setError(true)
+  }
+  setLoading(false)
+  setMessage(response.message);
+  event.target.value = null;
+}
+
+
 const DroolsFormInput = ({name}) => {
+  const [isLoading, setLoading] = useState(false);
+  const [isSuccess, setSuccess] = useState(false);
+  const [message, setMessage] = useState('');
+  const [isError, setError] = useState(false);
+  useEffect(() => {}, [name]);
+
+
   return name && (
-    <section id="form">
-    <h1 id="formName">{formMapping[name]}</h1>
+    <section className='drools-form-section'>
+    <h1>{formMapping[name]}</h1>
     <form>
-      <div>
-        <input id="selectedFile" type="file" accept=".xlsx, .xls" required/>
+      <div className="drools-input-div">
+        <label htmlFor="fileInput">
+            Upload a .xlsx file:
+        </label>
+        <input id="fileInput" type="file" accept=".xlsx, .xls" required onChange={e => handleUpload(e, setLoading, setSuccess, setMessage, setError)}/>
       </div>
-      <div className="row">
-        <div className="col">
-          <button id="button-refresh" type="button">Upload</button>
-        </div>
-        <div className="col">
-          <button id="button-download" type="button" >Download</button>
-        </div>
-        <div className="col">
-          <button id="button-restore" type="button">Reset</button>
-        </div>
+      <div className='drools-action-buttons'>
+        {/* <Button className="button-upload" type="button" onClick={() => handleUpload(file, setLoading)}>Upload</Button> */}
+        <Button className="button-download" type="button" >Download</Button>
+        <Button className="button-restore" type="button">Reset</Button>
       </div>
     </form>
-    <Loader/>
-    <div id="success-message"></div>
-    <div id="error-message"></div>
+    <Loader enabled={isLoading}/>
+    {isSuccess && <div className="success-message">{message}</div>}
+    {isError && <div className="error-message">{message}</div>}
   </section>
 )};
 

@@ -6,7 +6,7 @@ import Drools from "./component/drools/Drools"
 
 function App() {
   return (
-    <Drools />
+    <div><Drools /></div>
   //   <Router>
   //     <Routes>
   //       <Route path="/" element={<Home/>} />
