@@ -1,6 +1,6 @@
 export const formMapping = Object.freeze({
     PR_EL: 'Product Eligibility',
-    D_SA: 'Distribution Service Agreement',
-    D_SR: 'Distribution Service Role',
-    M_SA:  'Modification Service Agreement'
+    D_SA: 'Service Eligibility',
+    D_SR: 'Partner Eligibility',
+    M_SA: 'Business Eligibility'
   });
