@@ -18,7 +18,7 @@ const ProcessForm: any = (props: any) => {
     }
 
     const defaultClick = (value: boolean) => {
-        setProcess({ ...process, ["defaultValue"]: value });
+        setProcess({ ...process, defaultValue: value });
         handleDefault();
     }
 
@@ -32,7 +32,7 @@ const ProcessForm: any = (props: any) => {
 
     useEffect(() => {
         updateForm(name, process);
-    }, [process])
+    }, [process, updateForm, name])
 
     return (
         <div className="process-container">
