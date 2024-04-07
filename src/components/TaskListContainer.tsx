@@ -78,9 +78,6 @@ const TaskListContainer = (props: any) => {
         handleTaskChange(newArr);
     }
 
-    const handleCheckbox = (e: any) => {
-        handleChange(e.target.name, !taskView[e.target.name]);
-    }
     const handleInput = (e: any) => {
         handleChange(e.target.name, e.target.value);
     }
