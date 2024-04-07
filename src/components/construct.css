@@ -1,0 +1,188 @@
+@media screen and (max-width: 480px) {
+    .form-checkbox {
+        display: flex;
+        align-items: center;
+        font-size: 28px;
+        justify-content: space-between;
+        background-color: #dfdfdf;
+        padding: 10px;
+        border-radius: 10px 10px 0 0;
+    }
+
+    .form-checkbox-default {
+        display: flex;
+        align-items: center;
+        padding: 21px;
+        font-size: 14px;
+    }
+
+    .form-checkbox-default label {
+        color: #000;
+        cursor: pointer;
+        font-size: 20px;
+    }
+
+    .process-input-container {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .task-acc {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        border: 2px solid #ffffff;
+        border-radius: 20px 20px 0 0;
+        box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+        color: #000;
+        background-color: #d7d7d7;
+        margin-top: 10px;
+    }
+
+    .task-acc-opened {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        border: 2px solid #ffffff;
+        border-radius: 20px;
+        box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+        color: #fff;
+        background-color: #515151;
+        margin-top: 10px;
+    }
+
+    .process {
+        background-color: #f9f9f9d8;
+    }
+
+    .task-list-name {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .scrollable {
+        width: 100%;
+        max-height: 300px;
+        overflow-y: auto;
+    }
+
+    .task-name {
+        min-width: 100%;
+        display: flex;
+        background-color: #dfdfdf;
+        justify-content: space-between;
+        align-items: center;
+        gap: 10px;
+        border-radius: 20px;
+    }
+
+    .task-name-pushed {
+        min-width: 100%;
+        display: flex;
+        justify-content: space-between;
+        background-color: #515151;
+        align-items: center;
+        gap: 10px;
+        border-radius: 20px;
+        color: #fff;
+    }
+
+    .task-name-label {
+        width: 80%;
+        text-align: center;
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+
+    }
+
+    .delete {
+        display: flex;
+        align-items: center;
+        border-radius: 20px;
+        background-color: rgb(255, 150, 150);
+    }
+
+    .view {
+        padding: 5px;
+    }
+
+    .task-container {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        border: 1px solid #9a9a9a;
+        border-radius: 5px;
+        padding: 5px;
+    }
+
+    .input-label {
+        position: relative;
+        margin-top: 20px;
+    }
+
+    .task-input {
+        width: 100%;
+        padding: 8px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        box-sizing: border-box;
+    }
+
+    .input-label input:focus+label,
+    .input-label input:not(:placeholder-shown)+label {
+        top: -10px;
+        font-size: 0.75rem;
+        color: #666;
+    }
+
+    .input-label label {
+        position: absolute;
+        top: 50%;
+        left: 10px;
+        transform: translateY(-50%);
+        transition: top 0.3s, font-size 0.3s, color 0.3s;
+    }
+
+    .variables {
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        padding: 10px;
+    }
+
+    .variables h4 {
+        margin: 0;
+    }
+
+    .variables-list {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+    }
+
+    .add-task {
+        justify-content: center;
+        align-items: center;
+        display: flex;
+        width: 95%;
+        background-color: #ffffff;
+        border: 1px solid #000000;
+        border-radius: 50px;
+        margin: 20px;
+        padding: 10px 0;
+    }
+
+    .submit-button {
+        background-color: #4b5dff;
+        color: white;
+        text-align: center;
+        display: inline-block;
+        width: 100%;
+        font-size: 16px;
+        border-radius: 0 0 20px 20px;
+        cursor: pointer;
+        padding: 20px 0;
+    }
+}
