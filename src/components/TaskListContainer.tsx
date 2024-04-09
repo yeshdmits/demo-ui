@@ -8,44 +8,14 @@ const TaskListContainer = (props: any) => {
     const [showTasks, setShowTasks] = useState<boolean>(false)
     const [taskId, setTaskId] = useState<number>(-1)
     const [taskView, setTaskView] = useState<any>(null)
-    const { process, handleTaskChange } = props;
+    const { handleTaskChange, tasks, disabled } = props;
 
     const addTask = () => {
-        if (process.defaultValue) {
-            return true;
+        if (disabled) {
+            return;
         }
-        let newArr = [...process.tasks];
-        if (newArr.length === 0) {
-            newArr[0] = {
-                taskDefinitionKey: '',
-                taskName: '',
-                departmentName: '',
-                customComponentName: '',
-                json: '',
-                specificAssignee: false,
-                variables: {
-                    accessRoleGroup: '',
-                    dueDate: '',
-                    embeddedComponentURL: '',
-                    redirectURL: ''
-                }
-            }
-        } else {
-            newArr[newArr.length] = {
-                taskDefinitionKey: '',
-                taskName: '',
-                departmentName: '',
-                customComponentName: '',
-                json: '',
-                specificAssignee: false,
-                variables: {
-                    accessRoleGroup: '',
-                    dueDate: '',
-                    embeddedComponentURL: '',
-                    redirectURL: ''
-                }
-            }
-        }
+        let newArr = [...tasks];
+        newArr[newArr.length] = { ...newArr[0] };
         setTaskView(newArr[newArr.length - 1])
         setTaskId(newArr.length - 1)
         handleTaskChange(newArr);
@@ -53,27 +23,31 @@ const TaskListContainer = (props: any) => {
     }
 
     const handleViewTask = (id: number, value: any) => {
-        setTaskId(id);
-        setTaskView(value);
+        if (taskId === id) {
+            setTaskId(-1);
+            setTaskView(null);
+        } else {
+            setTaskId(id);
+            setTaskView(value);
+        }
     }
 
     const handleRemoveTask = (id: number) => {
-        if (process.defaultValue) {
+        if (disabled) {
             return;
         }
-        let newArr = [...process.tasks];
+        let newArr = [...tasks];
+        if (newArr.length === 1) {
+            return;
+        }
         newArr.splice(id, 1)
         handleTaskChange(newArr);
-        if (newArr.length === 0) {
-            setTaskView(null)
-        } else {
-            setTaskView(newArr[id - 1])
-        }
+        setTaskView(newArr[id - 1])
         setTaskId(id - 1)
     }
 
     const handleTask = (id: number, value: any) => {
-        let newArr = [...process.tasks]
+        let newArr = [...tasks]
         newArr[id] = value;
         handleTaskChange(newArr);
     }
@@ -95,7 +69,7 @@ const TaskListContainer = (props: any) => {
         setTaskView(null);
     }
 
-    useEffect(() => { }, [process, taskId, taskView]);
+    useEffect(() => { }, [taskId, taskView]);
 
 
     return (
@@ -110,114 +84,152 @@ const TaskListContainer = (props: any) => {
             </div>
             <div className={`task-list ${showTasks ? 'open' : ''}`}>
                 <div className='task-list-name'>
-                    {process.tasks.length !== 0 && showTasks && <div className='scrollable'>
-                        {showTasks && process.tasks.map((value: any, id: number) =>
-                            <div className={taskId === id ? 'task-name-pushed' : 'task-name'} key={id} onClick={() => handleViewTask(id, value)}>
-                                <div className='task-name-label' >
-                                    {value.taskName ? value.taskName : "new task"}
+                    {tasks.length !== 0 && showTasks && 
+                    <div className='scrollable'>
+                        {showTasks && tasks.map((value: any, id: number) =>
+                            <div key={id} className='task-full'>
+                                <div className={taskId === id ? 'task-name-pushed' : 'task-name'} onClick={() => handleViewTask(id, value)}>
+                                    <div className='task-name-label' >
+                                        {value.taskName ? value.taskName : "new task"}
+                                    </div>
+                                    <div className='delete' onClick={() => handleRemoveTask(id)}><DeleteSvg /></div>
                                 </div>
-                                <div className='delete' onClick={() => handleRemoveTask(id)}><DeleteSvg /></div>
+                                {showTasks && taskId === id &&
+                                    <div className='task-container'>
+                                        <div className='input-label'>
+                                            <input
+                                                disabled={disabled}
+                                                maxLength={50}
+                                                className="task-input"
+                                                type="text"
+                                                name="taskDefinitionKey"
+                                                value={taskView.taskDefinitionKey}
+                                                onChange={handleInput}
+                                            />
+                                            <label>Task Definition Key</label>
+                                        </div>
+                                        <div className='input-label'>
+                                            <input
+                                                disabled={disabled}
+                                                maxLength={50}
+                                                className="task-input"
+                                                type="text"
+                                                name="taskName"
+                                                value={taskView.taskName}
+                                                onChange={handleInput}
+                                            />
+                                            <label>Task Name</label>
+                                        </div>
+                                        <div className='input-label'>
+                                            <input
+                                                disabled={disabled}
+                                                maxLength={50}
+                                                className="task-input"
+                                                type="text"
+                                                name="departmentName"
+                                                value={taskView.departmentName}
+                                                onChange={handleInput}
+                                            />
+                                            <label>Department Name</label>
+                                        </div>
+                                        <div className="task-input" onClick={() => handleChange("specificAssignee", !taskView.specificAssignee)}>
+                                            <input
+                                                type="checkbox"
+                                                checked={taskView.specificAssignee}
+                                                disabled={disabled}
+                                                onChange={() => handleChange("specificAssignee", !taskView.specificAssignee)}
+                                            />
+                                            <label htmlFor={props.id}>Specific Assignee</label>
+                                        </div>
+                                        <div className='input-label'>
+                                            <input
+                                                disabled={disabled}
+                                                maxLength={50}
+                                                className="task-input"
+                                                type="text"
+                                                name="customComponentName"
+                                                value={taskView.customComponentName}
+                                                onChange={handleInput}
+                                            />
+                                            <label>Custom Component Name</label>
+                                        </div>
+                                        <div className='input-label'>
+                                            <input
+                                                disabled={disabled}
+                                                maxLength={50}
+                                                className="task-input"
+                                                type="text"
+                                                name="json"
+                                                value={taskView.json}
+                                                onChange={handleInput}
+                                            />
+                                            <label>JSON Schema</label>
+                                        </div>
+
+                                        <div className='variables'>
+                                            <h4>Variables</h4>
+                                            <div className='variables-list'>
+                                                <div className='input-label'>
+                                                    <input disabled={disabled}
+                                                        maxLength={50}
+                                                        className="task-input"
+                                                        type="text"
+                                                        name="accessRoleGroup"
+                                                        value={taskView.variables.accessRoleGroup}
+                                                        onChange={handleVariableInput}
+                                                    />
+                                                    <label>Access Role Group</label>
+                                                </div>
+                                                <div className='input-label'>
+                                                    <input
+                                                        disabled={disabled}
+                                                        maxLength={50}
+                                                        className="task-input"
+                                                        type="text"
+                                                        name="dueDate"
+                                                        value={taskView.variables.dueDate}
+                                                        onChange={handleVariableInput}
+                                                    />
+                                                    <label>Due Date</label>
+                                                </div>
+                                                <div className='input-label'>
+                                                    <input
+                                                        disabled={disabled}
+                                                        maxLength={50}
+                                                        className="task-input"
+                                                        type="text"
+                                                        name="embeddedComponentURL"
+                                                        value={taskView.variables.embeddedComponentURL}
+                                                        onChange={handleVariableInput}
+                                                    />
+                                                    <label>Component URL</label>
+                                                </div>
+                                                <div className='input-label'>
+                                                    <input
+                                                        disabled={disabled}
+                                                        maxLength={50}
+                                                        className="task-input"
+                                                        type="text"
+                                                        name="redirectURL"
+                                                        value={taskView.variables.redirectURL}
+                                                        onChange={handleVariableInput}
+                                                    />
+                                                    <label>Redirect URL</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                }
                             </div>)
                         }
                     </div>}
-                    {showTasks && <div className='add-task' onClick={() => addTask()}>
-                        <PlusSvg className='add-task-button' />
-                    </div>}
-                </div>
-                {showTasks && taskId !== -1 &&
-                    <div className='task-container'>
-                        <div className='input-label'>
-                            <input
-                                disabled={process.defaultValue}
-                                maxLength={50}
-                                className="task-input"
-                                type="text"
-                                name="taskDefinitionKey"
-                                value={taskView.taskDefinitionKey}
-                                onChange={handleInput}
-                            />
-                            <label>Task Definition Key</label>
-                        </div>
-                        <div className='input-label'>
-                            <input
-                                disabled={process.defaultValue}
-                                maxLength={50}
-                                className="task-input"
-                                type="text"
-                                name="taskName"
-                                value={taskView.taskName}
-                                onChange={handleInput}
-                            />
-                            <label>Task Name</label>
-                        </div>
-                        <div className='input-label'>
-                            <input
-                                disabled={process.defaultValue}
-                                maxLength={50}
-                                className="task-input"
-                                type="text"
-                                name="departmentName"
-                                value={taskView.departmentName}
-                                onChange={handleInput}
-                            />
-                            <label>Department Name</label>
-                        </div>
-                        <div className="task-input" onClick={() => handleChange("specificAssignee", !taskView.specificAssignee)}>
-                            <input
-                                type="checkbox"
-                                checked={taskView.specificAssignee}
-                                disabled={process.defaultValue}
-                            />
-                            <label htmlFor={props.id}>Specific Assignee</label>
-                        </div>
-                        <div className='input-label'>
-                            <input
-                                disabled={process.defaultValue}
-                                maxLength={50}
-                                className="task-input"
-                                type="text"
-                                name="customComponentName"
-                                value={taskView.customComponentName}
-                                onChange={handleInput}
-                            />
-                            <label>Custom Component Name</label>
-                        </div>
-                        <div className='input-label'>
-                            <input
-                                disabled={process.defaultValue}
-                                maxLength={50}
-                                className="task-input"
-                                type="text"
-                                name="json"
-                                value={taskView.json}
-                                onChange={handleInput}
-                            />
-                            <label>JSON Schema</label>
-                        </div>
+                    {showTasks &&
+                        <div className='add-task'
+                            onClick={() => addTask()}>
+                            <PlusSvg className='add-task-button' />
+                        </div>}
 
-                        <div className='variables'>
-                            <h4>Variables</h4>
-                            <div className='variables-list'>
-                                <div className='input-label'>
-                                    <input disabled={process.defaultValue} maxLength={50} className="task-input" type="text" name="accessRoleGroup" value={taskView.variables.accessRoleGroup} onChange={handleVariableInput} />
-                                    <label>Access Role Group</label>
-                                </div>
-                                <div className='input-label'>
-                                    <input disabled={process.defaultValue} maxLength={50} className="task-input" type="text" name="dueDate" value={taskView.variables.dueDate} onChange={handleVariableInput} />
-                                    <label>Due Date</label>
-                                </div>
-                                <div className='input-label'>
-                                    <input disabled={process.defaultValue} maxLength={50} className="task-input" type="text" name="embeddedComponentURL" value={taskView.variables.embeddedComponentURL} onChange={handleVariableInput} />
-                                    <label>Component URL</label>
-                                </div>
-                                <div className='input-label'>
-                                    <input disabled={process.defaultValue} maxLength={50} className="task-input" type="text" name="redirectURL" value={taskView.variables.redirectURL} onChange={handleVariableInput} />
-                                    <label>Redirect URL</label>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                }
+                </div>
             </div>
         </div>
     );
