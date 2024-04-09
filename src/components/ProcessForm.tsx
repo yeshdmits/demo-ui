@@ -2,12 +2,15 @@ import React, { useState } from 'react';
 import TaskListContainer from './TaskListContainer';
 import { ReactComponent as ViewSvg } from '../svgs/open-process.svg';
 import { ReactComponent as HideSvg } from '../svgs/close.svg';
+import './screen-styles.css';
+import './display-styles.css';
 
 const initialFormData = {
     name: "Process",
     enabled: true,
     defaultValue: true,
     processDefinitionKey: 'defaultProductOpening',
+    schema: "",
     tasks: [
         {
             taskDefinitionKey: 'product-opening',
@@ -28,7 +31,6 @@ const initialFormData = {
 };
 
 const ProcessForm: any = () => {
-    // const [process, setProcess] = useState<any>(props.process)
     const [formData, setFormData] = useState<any>(initialFormData);
     const [showProcess, setShowProcess] = useState<boolean>(true)
 
@@ -46,10 +48,8 @@ const ProcessForm: any = () => {
     const handleDefault = (value: boolean) => {
         if (value) {
             setFormData(initialFormData);
-            console.log("Set Form Data Default")
         } else {
             setFormData({ ...formData, defaultValue: false })
-            console.log("Set Form Data Default false")
         }
     }
 
@@ -58,7 +58,6 @@ const ProcessForm: any = () => {
     }
 
     const handleTaskChange = (value: any) => {
-        // setProcess({ ...process, "tasks": value })
         setFormData((prevFormData: any) => ({
             ...prevFormData,
             "tasks": value,
@@ -116,17 +115,17 @@ const ProcessForm: any = () => {
                                 />
                                 <label>Process Definition Key</label>
                             </div>
-                            {/* <div className='input-label'>
-                        <input
-                            className="task-input"
-                            type="text"
-                            name="schema"
-                            value={process.schema}
-                            onChange={handleInput}
-                            disabled={process.defaultValue}
-                        />
-                        <label>JSON Schema</label>
-                    </div> */}
+                            <div className='input-label'>
+                                <input
+                                    className="task-input"
+                                    type="text"
+                                    name="schema"
+                                    value={formData.schema}
+                                    onChange={handleInput}
+                                    disabled={formData.defaultValue}
+                                />
+                                <label>JSON Schema</label>
+                            </div>
 
 
                         </div>

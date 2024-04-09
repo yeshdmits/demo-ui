@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import ConstructForm from './components/Construct';
+import ProcessForm from './components/ProcessForm';
 
 function App() {
   return (
@@ -20,7 +20,7 @@ function App() {
     //     </a>
     //   </header>
     // </div>
-    <ConstructForm/>
+    <ProcessForm/>
   );
 }
 
