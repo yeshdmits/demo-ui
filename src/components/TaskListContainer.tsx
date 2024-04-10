@@ -76,8 +76,8 @@ const TaskListContainer = (props: any) => {
         setIsJsonFormOpen((oldValue: any) => !oldValue);
     }
     const handleSchemaChange = (value: any) => {
-        setTaskView({ ...taskView, ["schema"]: value })
-        handleTask(taskId, { ...taskView, ["schema"]: value })
+        setTaskView({ ...taskView, "schema": value })
+        handleTask(taskId, { ...taskView, "schema": value })
     }
     useEffect(() => { }, [taskId, taskView]);
 
