@@ -1,0 +1,185 @@
+@media screen and (max-width: 480px) {
+    .json-form-container {
+        backdrop-filter: blur(5px);
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 94%;
+        background-color: rgba(0, 0, 0, 0.5);
+        /* Semi-transparent background */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .dialog-form {
+        height: 100vh;
+        background-color: #fff;
+        padding: 5px;
+        min-width: 95%;
+        position: fixed;
+        top: 0;
+        left: 0;
+    }
+
+    .dialog-content {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        max-height: 600px;
+        min-height: 600px;
+        width: 100%;
+    }
+
+    .dialog-schema {
+        display: flex;
+        flex-direction: column;
+        width: 80%;
+        justify-content: space-between;
+    }
+
+    .dialog-json-form {
+        overflow-y: scroll;
+        width: 85%;
+    }
+
+    .dialog-textarea {
+        box-sizing: content-box;
+        font-size: 16px;
+    }
+
+    .dialog-apply {
+        border: 1px solid #888888;
+        background-color: #828fff;
+        width: 30%;
+        text-align: center;
+        padding: 5px;
+        border-radius: 4px;
+        margin-bottom: 4px;
+    }
+
+    .dialog-apply:hover {
+        cursor: pointer;
+        background-color: #4b5dff;
+        color: #fff;
+    }
+
+    .dialog-schema-actions {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .dialog-reset {
+        border: 1px solid #888888;
+        background-color: #ff7d7d;
+        width: 30%;
+        text-align: center;
+        padding: 5px;
+        border-radius: 4px;
+        margin-bottom: 4px;
+    }
+
+    .dialog-reset:hover {
+        cursor: pointer;
+        background-color: #ff3a3a;
+        color: #fff;
+    }
+
+    .error-msg {
+        color: #ff3a3a;
+        width: 100%;
+    }
+
+    .dialog-footer {
+        width: 80%;
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .dialog-cancel {
+        border: 1px solid #4a4a4a;
+        background-color: #a7a7a7;
+        width: 30%;
+        text-align: center;
+        padding: 5px;
+        border-radius: 4px;
+        margin-top: 7px;
+    }
+
+    .dialog-cancel:hover {
+        cursor: pointer;
+        background-color: #ffffff;
+    }
+
+    .dialog-save {
+        border: 1px solid #4a4a4a;
+        background-color: #4b5dff;
+        color: #fff;
+        width: 30%;
+        text-align: center;
+        padding: 5px;
+        border-radius: 4px;
+        margin-top: 7px;
+    }
+
+    .dialog-save:hover {
+        cursor: pointer;
+        background-color: #8793ff;
+        color: #000;
+    }
+
+
+
+
+    /* Styles for the entire form */
+    .rjsf {
+        width: 90%;
+        border: 1px solid #ccc;
+        padding: 0;
+        margin: 0;
+        margin-top: 10px;
+        border-radius: 5px;
+    }
+
+    #root {
+        margin: 0;
+        padding: 0;
+        border: 0;
+    }
+
+    /* Styles for the form description */
+    .field-description {
+        margin-bottom: 20px;
+    }
+
+    /* Styles for form fields */
+    .form-group {
+        margin-bottom: 15px;
+    }
+
+    /* Styles for field labels */
+    .control-label {
+        font-weight: bold;
+        margin-bottom: 5px;
+    }
+
+    /* Styles for required indicator */
+    .required {
+        color: red;
+    }
+
+    /* Styles for form inputs */
+    .form-control {
+        width: 95%;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 3px;
+    }
+
+    /* Styles for error messages */
+    .text-danger {
+        color: red;
+        list-style: none;
+        font-size: 12px;
+    }
+}

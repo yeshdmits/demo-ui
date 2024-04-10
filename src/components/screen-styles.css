@@ -31,7 +31,6 @@
         display: flex;
         justify-content: flex-start;
         align-items: center;
-        border: 2px solid #ffffff;
         border-radius: 20px 20px 0 0;
         box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
         color: #000;
@@ -43,7 +42,6 @@
         display: flex;
         justify-content: flex-start;
         align-items: center;
-        border: 2px solid #ffffff;
         border-radius: 20px;
         box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
         color: #fff;
@@ -184,5 +182,19 @@
         border-radius: 0 0 20px 20px;
         cursor: pointer;
         padding: 20px 0;
+    }
+    .schema-input {
+        display: flex;
+        flex-direction: column;
+    }
+    .open-dialog {
+        min-width: 100%;
+        min-height: 40px;
+        margin-bottom: 7px;
+    }
+    .open-dialog-disabled {
+        min-width: 100%;
+        min-height: 40px;
+        margin-bottom: 7px;
     }
 }

@@ -10,14 +10,13 @@ const initialFormData = {
     enabled: true,
     defaultValue: true,
     processDefinitionKey: 'defaultProductOpening',
-    schema: "",
     tasks: [
         {
             taskDefinitionKey: 'product-opening',
             taskName: 'Product Opening',
             departmentName: 'RM',
             customComponentName: "",
-            json: "",
+            schema: '{"title":"A registration form","description":"A simple form example.","type":"object","required":["firstName","lastName"],"properties":{"firstName":{"type":"string","title":"First name","default":"Chuck"},"lastName":{"type":"string","title":"Last name"},"age":{"type":"integer","title":"Age"},"bio":{"type":"string","title":"Bio"},"password":{"type":"string","title":"Password","minLength":3},"telephone":{"type":"string","title":"Telephone","minLength":10}}}',
             circumsance: 'OPENING',
             specificAssignee: false,
             variables: {
@@ -32,7 +31,7 @@ const initialFormData = {
 
 const ProcessForm: any = () => {
     const [formData, setFormData] = useState<any>(initialFormData);
-    const [showProcess, setShowProcess] = useState<boolean>(true)
+    const [showProcess, setShowProcess] = useState<boolean>(true);
 
     const handleChange = (name: string, value: any) => {
         console.log("Handle Change " + name + " " + JSON.stringify(value))
@@ -70,7 +69,7 @@ const ProcessForm: any = () => {
     };
 
     return (
-        <form className="form-container">
+        <div className="form-container">
             <div className="process-list-container">
                 <div className="process-container">
                     <div className="form-checkbox" onClick={() => handleOpen()}>
@@ -115,23 +114,8 @@ const ProcessForm: any = () => {
                                 />
                                 <label>Process Definition Key</label>
                             </div>
-                            <div className='input-label'>
-                                <input
-                                    className="task-input"
-                                    type="text"
-                                    name="schema"
-                                    value={formData.schema}
-                                    onChange={handleInput}
-                                    disabled={formData.defaultValue}
-                                />
-                                <label>JSON Schema</label>
-                            </div>
-
-
                         </div>
-
                         <TaskListContainer
-                            process={formData}
                             tasks={formData.tasks}
                             handleTaskChange={(value: any) => handleTaskChange(value)}
                             disabled={formData.defaultValue}
@@ -142,7 +126,7 @@ const ProcessForm: any = () => {
             <div className='submit-button' onClick={handleSubmit}>
                 Submit
             </div>
-        </form>
+        </div>
     );
 }
 

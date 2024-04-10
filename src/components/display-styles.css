@@ -6,41 +6,46 @@
     background-color: #dfdfdf;
     padding: 10px;
     border-radius: 20px 20px 0 0;
-  }
-  .form-checkbox:hover {
+}
+
+.form-checkbox:hover {
     background-color: rgba(173, 173, 173, 0.447);
     cursor: pointer;
-  }
-  
-  .form-checkbox-default {
+}
+
+.form-checkbox-default {
     display: flex;
     align-items: center;
     font-size: 14px;
     padding: 21px 0;
-  }
-  .form-checkbox-default:hover {
+}
+
+.form-checkbox-default:hover {
     cursor: pointer;
     background-color: rgba(173, 173, 173, 0.447);
-  }
-  
-  .form-checkbox-default label {
+}
+
+.form-checkbox-default label {
     color: #000;
     cursor: pointer;
     font-size: 20px;
     padding-left: 20px;
-  }
-  .form-checkbox-default input {
+}
+
+.form-checkbox-default input {
     margin-left: 20px;
-  }
-  .form-checkbox-default input:hover {
+}
+
+.form-checkbox-default input:hover {
     cursor: pointer;
-  }
-  .process-input-container {
+}
+
+.process-input-container {
     display: flex;
     flex-direction: column;
-  }
-  
-  .task-acc {
+}
+
+.task-acc {
     display: flex;
     justify-content: flex-start;
     align-items: center;
@@ -49,14 +54,15 @@
     color: #000;
     background-color: #d7d7d7;
     margin-top: 10px;
-  }
-  .task-acc:hover {
+}
+
+.task-acc:hover {
     background-color: #515151;
     color: #fff;
     cursor: pointer;
-  }
-  
-  .task-acc-opened {
+}
+
+.task-acc-opened {
     display: flex;
     justify-content: flex-start;
     align-items: center;
@@ -65,34 +71,37 @@
     color: #fff;
     background-color: #515151;
     margin-top: 10px;
-  }
-  .task-acc-opened:hover {
+}
+
+.task-acc-opened:hover {
     background-color: #606060;
     cursor: pointer;
-  }
-  .process {
+}
+
+.process {
     background-color: #f9f9f9d8;
-  }
-  
-  .task-list-name {
+}
+
+.task-list-name {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-  }
-  .accordion {
+}
+
+.accordion {
     border-radius: 20px 20px 0 0;
     border-left: 1px solid #9a9a9a;
     border-right: 1px solid #9a9a9a;
-  }
-  
-  .scrollable {
+}
+
+.scrollable {
     width: 100% !important;
     max-height: 400px;
     overflow-y: auto;
-  }
-  
-  .task-name {
+}
+
+.task-name {
     min-width: 100%;
     display: flex;
     background-color: #dfdfdf;
@@ -100,14 +109,15 @@
     align-items: center;
     gap: 10px;
     border-radius: 0 20px 20px 0;
-  }
-  .task-name:hover {
+}
+
+.task-name:hover {
     cursor: pointer;
     background-color: #dedede63;
     color: #000;
-  }
-  
-  .task-name-pushed {
+}
+
+.task-name-pushed {
     min-width: 100%;
     display: flex;
     justify-content: space-between;
@@ -116,91 +126,94 @@
     gap: 10px;
     border-radius: 0 20px 20px 0;
     color: #fff;
-  }
-  .task-name-pushed:hover {
+}
+
+.task-name-pushed:hover {
     cursor: pointer;
     background-color: #828282;
     color: #000;
-  }
-  
-  .task-name-label {
+}
+
+.task-name-label {
     width: 80%;
     text-align: center;
     word-wrap: break-word;
     overflow-wrap: break-word;
-  
-  }
-  
-  .delete {
+
+}
+
+.delete {
     display: flex;
     align-items: center;
     border-radius: 20px;
     background-color: rgb(255, 150, 150);
-  }
-  .delete:hover {
+}
+
+.delete:hover {
     background-color: rgb(250, 100, 100);
-  }
-  
-  .view {
+}
+
+.view {
     padding: 5px;
-  }
-  
-  .task-container {
+}
+
+.task-container {
     margin-top: 10px;
     display: flex;
     flex-direction: column;
     gap: 10px;
     border-radius: 5px;
     padding: 5px;
-  }
-  
-  .input-label {
+}
+
+.input-label {
     position: relative;
     margin: 15px;
-  }
-  
-  .task-input {
+    width: 95%;
+}
+
+.task-input {
     width: 100%;
     padding: 8px;
     border: 1px solid #ccc;
     border-radius: 5px;
     box-sizing: border-box;
     font-size: 16px;
-  }
-  
-  .input-label input:focus+label,
-  .input-label input:not(:placeholder-shown)+label {
+}
+
+.input-label input:focus+label,
+.input-label input:not(:placeholder-shown)+label {
     top: -10px;
     font-size: 16px;
     color: #666;
-  }
-  
-  .input-label label {
+}
+
+.input-label label {
     position: absolute;
     top: 50%;
     left: 10px;
     transform: translateY(-50%);
     transition: top 0.3s, font-size 0.3s, color 0.3s;
-  }
-  
-  .variables {
+}
+
+.variables {
     border: 1px solid #ccc;
     border-radius: 5px;
     padding: 10px;
-  }
-  
-  .variables h4 {
+}
+
+.variables h4 {
     margin: 0;
-  }
-  
-  .variables-list {
+}
+
+.variables-list {
     display: flex;
     flex-direction: column;
     gap: 10px;
     grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
-  }
-  
-  .add-task {
+}
+
+.add-task {
     justify-content: center;
     align-items: center;
     display: flex;
@@ -208,15 +221,16 @@
     background-color: #dfdfdf;
     margin: 10px 0;
     padding: 10px 0;
-  }
-  .add-task:hover {
+}
+
+.add-task:hover {
     cursor: pointer;
     background-color: #a0a0a02f;
     border: 0px solid #000000;
-  
-  }
-  
-  .submit-button {
+
+}
+
+.submit-button {
     background-color: #4b5dff;
     color: white;
     text-align: center;
@@ -226,7 +240,41 @@
     border-radius: 0 0 20px 20px;
     cursor: pointer;
     padding: 20px 0;
-  }
-  .submit-button:hover {
+}
+
+.submit-button:hover {
     background-color: #4b5dffba;
-  }
+}
+
+.schema-input {
+    display: flex;
+}
+
+.open-dialog {
+    width: 10%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #ccc;
+    background-color: #367244;
+    border-radius: 20px;
+    color: #fff;
+}
+.open-dialog-disabled {
+    width: 10%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #ccc;
+    background-color: #36724468;
+    border-radius: 20px;
+    color: #fff;
+}
+.open-dialog-disabled:hover {
+    cursor: default;
+}
+
+.open-dialog:hover {
+    cursor: pointer;
+    background-color: #0ea932;
+}
