@@ -4,19 +4,21 @@ import { ReactComponent as PlusSvg } from '../svgs/plus.svg';
 import { ReactComponent as HideSvg } from '../svgs/close.svg';
 import { ReactComponent as DeleteSvg } from '../svgs/delete.svg';
 import DisplayJsonFormDialog from './form/DisplayJsonFormDialog';
+import { useNavigate } from 'react-router-dom';
 
 const TaskListContainer = (props: any) => {
-    const { handleTaskChange, tasks, disabled } = props;
+    const { handleTaskChange, formData, disabled } = props;
     const [showTasks, setShowTasks] = useState<boolean>(false)
     const [taskId, setTaskId] = useState<number>(0)
-    const [taskView, setTaskView] = useState<any>(tasks[0])
+    const [taskView, setTaskView] = useState<any>(formData.tasks[0])
     const [isJsonFormOpen, setIsJsonFormOpen] = useState<boolean>(false);
+    const navigate = useNavigate();
 
     const addTask = () => {
         if (disabled) {
             return;
         }
-        let newArr = [...tasks];
+        let newArr = [...formData.tasks];
         newArr[newArr.length] = { ...newArr[0] };
         setTaskView(newArr[newArr.length - 1])
         setTaskId(newArr.length - 1)
@@ -38,7 +40,7 @@ const TaskListContainer = (props: any) => {
         if (disabled) {
             return;
         }
-        let newArr = [...tasks];
+        let newArr = [...formData.tasks];
         if (newArr.length === 1) {
             return;
         }
@@ -49,7 +51,7 @@ const TaskListContainer = (props: any) => {
     }
 
     const handleTask = (id: number, value: any) => {
-        let newArr = [...tasks]
+        let newArr = [...formData.tasks]
         newArr[id] = value;
         handleTaskChange(newArr);
     }
@@ -73,7 +75,14 @@ const TaskListContainer = (props: any) => {
 
     const handleJsonFormDialog = () => {
         if (disabled) return;
-        setIsJsonFormOpen((oldValue: any) => !oldValue);
+        // setIsJsonFormOpen((oldValue: any) => !oldValue);
+        navigate("/builder/form", {
+            state: {
+                schema: JSON.parse(taskView.schema),
+                taskId: taskId,
+                formData: formData
+            }
+        });
     }
     const handleSchemaChange = (value: any) => {
         setTaskView({ ...taskView, "schema": value })
@@ -94,9 +103,9 @@ const TaskListContainer = (props: any) => {
             </div>
             <div className={`task-list ${showTasks ? 'open' : ''}`}>
                 <div className='task-list-name'>
-                    {tasks.length !== 0 && showTasks &&
+                    {formData.tasks.length !== 0 && showTasks &&
                         <div className='scrollable'>
-                            {showTasks && tasks.map((value: any, id: number) =>
+                            {showTasks && formData.tasks.map((value: any, id: number) =>
                                 <div key={id} className='task-full'>
                                     <div className={taskId === id ? 'task-name-pushed' : 'task-name'} onClick={() => handleViewTask(id, value)}>
                                         <div className='task-name-label' >
@@ -164,7 +173,7 @@ const TaskListContainer = (props: any) => {
                                                 <label>Custom Component Name</label>
                                             </div>
                                             <div className='schema-input'>
-                                                <div className={disabled ? "open-dialog-disabled":"open-dialog"} onClick={handleJsonFormDialog}>Test Form</div>
+                                                <div className={disabled ? "open-dialog-disabled" : "open-dialog"} onClick={handleJsonFormDialog}>Test Form</div>
                                                 <div className='input-label'>
                                                     <input
                                                         disabled={true}
@@ -244,12 +253,12 @@ const TaskListContainer = (props: any) => {
 
                 </div>
             </div>
-            {taskView &&
+            {/* {taskView &&
                 <DisplayJsonFormDialog
                     isOpen={isJsonFormOpen}
                     onClose={handleJsonFormDialog}
                     schema={JSON.parse(taskView.schema)}
-                    handleSchemaChange={(value: any) => handleSchemaChange(value)} />}
+                    handleSchemaChange={(value: any) => handleSchemaChange(value)} />} */}
         </div>
     );
 }

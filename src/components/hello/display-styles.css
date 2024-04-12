@@ -1,0 +1,111 @@
+.landing-page {
+    max-width: 800px;
+    margin: 50px auto;
+    /* Add some margin to center vertically */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    /* Add a subtle shadow */
+    background-color: #f8f9fa;
+    /* Light background color */
+}
+
+.hello-header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.hello-header:hover {
+    cursor: default;
+}
+
+.hello-name {
+    font-size: 3rem;
+    /* Increase font size */
+    color: #007bff;
+    /* Blue color */
+    margin-bottom: 10px;
+    /* Add some margin below */
+}
+
+.hello-cv {
+    font-size: 1.2rem;
+    color: #666;
+}
+
+.hello-cv:hover {
+    cursor: pointer;
+    color: #007bff;
+    /* Change color on hover */
+}
+
+.hello-info {
+    font-size: 1.2rem;
+    color: #555;
+    /* Darker color for better readability */
+    margin-bottom: 20px;
+    /* Add some margin below */
+}
+
+.work-experience {
+    margin-bottom: 40px;
+}
+
+.hello-acc-header {
+    font-size: 20px;
+    color: #333;
+    padding: 20px;
+}
+.hello-acc-header:hover {
+    cursor: pointer;
+    background-color: #777;
+    color: #fff;
+}
+
+.hello-job {
+    margin: 20px;
+}
+.hello-job:hover {
+    cursor: default;
+}
+.hello-job h3 {
+    font-size: 1.5rem;
+    color: #333;
+}
+
+.hello-job p {
+    font-size: 1.1rem;
+    color: #666;
+}
+
+.skills {
+    margin-bottom: 40px;
+}
+
+
+.skills-list {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 20px
+}
+
+.skill-group {
+    flex: 0 0 calc(33.33% - 20px);
+    margin-bottom: 20px;
+    padding: 10px;
+}
+
+.skill-group:hover {
+    cursor: pointer;
+    background-color: #ddd;
+}
+
+.skill-group h3 {
+    font-size: 1.3rem;
+    color: #333;
+}
+
+.skill-group p {
+    font-size: 1.1rem;
+    color: #666;
+}

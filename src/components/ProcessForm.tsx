@@ -4,6 +4,7 @@ import { ReactComponent as ViewSvg } from '../svgs/open-process.svg';
 import { ReactComponent as HideSvg } from '../svgs/close.svg';
 import './screen-styles.css';
 import './display-styles.css';
+import { useLocation } from 'react-router-dom';
 
 const initialFormData = {
     name: "Process",
@@ -30,7 +31,8 @@ const initialFormData = {
 };
 
 const ProcessForm: any = () => {
-    const [formData, setFormData] = useState<any>(initialFormData);
+    const { state } = useLocation();
+    const [formData, setFormData] = useState<any>(state && state.formData ? state.formData : initialFormData);
     const [showProcess, setShowProcess] = useState<boolean>(true);
 
     const handleChange = (name: string, value: any) => {
@@ -116,7 +118,7 @@ const ProcessForm: any = () => {
                             </div>
                         </div>
                         <TaskListContainer
-                            tasks={formData.tasks}
+                            formData={formData}
                             handleTaskChange={(value: any) => handleTaskChange(value)}
                             disabled={formData.defaultValue}
                         />
