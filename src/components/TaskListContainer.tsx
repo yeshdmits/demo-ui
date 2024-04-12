@@ -3,7 +3,6 @@ import { ReactComponent as ViewSvg } from '../svgs/open.svg';
 import { ReactComponent as PlusSvg } from '../svgs/plus.svg';
 import { ReactComponent as HideSvg } from '../svgs/close.svg';
 import { ReactComponent as DeleteSvg } from '../svgs/delete.svg';
-import DisplayJsonFormDialog from './form/DisplayJsonFormDialog';
 import { useNavigate } from 'react-router-dom';
 
 const TaskListContainer = (props: any) => {
@@ -11,7 +10,6 @@ const TaskListContainer = (props: any) => {
     const [showTasks, setShowTasks] = useState<boolean>(false)
     const [taskId, setTaskId] = useState<number>(0)
     const [taskView, setTaskView] = useState<any>(formData.tasks[0])
-    const [isJsonFormOpen, setIsJsonFormOpen] = useState<boolean>(false);
     const navigate = useNavigate();
 
     const addTask = () => {
@@ -83,10 +81,6 @@ const TaskListContainer = (props: any) => {
                 formData: formData
             }
         });
-    }
-    const handleSchemaChange = (value: any) => {
-        setTaskView({ ...taskView, "schema": value })
-        handleTask(taskId, { ...taskView, "schema": value })
     }
     useEffect(() => { }, [taskId, taskView]);
 
