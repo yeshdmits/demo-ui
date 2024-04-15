@@ -19,8 +19,8 @@ const DisplayJsonFormDialog = () => {
     }
 
     const handleSchemaSave = () => {
-        let newFormData = {...state.formData};
-        
+        let newFormData = { ...state.formData };
+
         newFormData.tasks[state.taskId].schema = JSON.stringify(schema)
         navigate("/builder", {
             state: {
@@ -64,8 +64,6 @@ const DisplayJsonFormDialog = () => {
 
 
     return (
-        // <dialog aria-modal='true' open={isOpen} className={isOpen ? 'json-form-container' : ''}>
-        // {isOpen &&
         <div className="dialog-form">
             <div className="dialog-header">
                 <h2>Form Here</h2>
@@ -116,8 +114,6 @@ const DisplayJsonFormDialog = () => {
                 <div className="dialog-save" onClick={handleSchemaSave}>Save</div>
             </div>
         </div>
-        // }
-        // </dialog>
     );
 }
 

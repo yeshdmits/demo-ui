@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import './display-styles.css'
 import { Link } from "react-router-dom";
 import pdf from '../../types.s';
+import CreateProduct from './CreateProduct';
 
 const jobs = [
     {
@@ -146,6 +147,11 @@ const HelloComponent = () => {
                             <p>Infrastructure as code (IaC), automation, monitoring tools (Prometheus, Grafana)</p>
                         </div>
                     </div>}
+                </section>
+                <section>
+                    <div className="hello-acc-header" onClick={handleShowSkill}>
+                        <CreateProduct />
+                    </div>
                 </section>
             </div>
         </div >

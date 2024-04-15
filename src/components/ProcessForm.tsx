@@ -6,6 +6,11 @@ import './screen-styles.css';
 import './display-styles.css';
 import { useLocation } from 'react-router-dom';
 
+
+// "formData": "{\"full_name\":\"Random Chel\",\"date_of_birth\":\"1970-02-24\",\"income_source\":\"Business ownership\",\"account_purpose\":\"Personal savings\",\"transaction_frequency\":\"Monthly\",\"average_balance\":\">$10,000\",\"additional_services\":\"Investment advisory\",\"account_management_preference\":\"Mobile app\",\"specific_requirements\":\"Access to ATMs\",\"banking_familiarity\":\"Intermediate\"}",
+
+
+// "formData": "{\"decision\": \"Approved\"}",
 const initialFormData = {
     name: "Process",
     enabled: true,
