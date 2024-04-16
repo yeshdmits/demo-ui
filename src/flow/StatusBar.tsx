@@ -15,8 +15,8 @@ const StatusBar = (props: any) => {
                 <div className={`status-item ${props.status === 'In Progress' ? 'active' : props.status === 'Created' ? 'pending' : 'done'}`}>In Progress</div>
             </div>
             <div className="product-status">
-                {props.status === 'Active' ? <StatusInProgress /> : <StatusPending />}
-                <div className={`status-item ${props.status === 'Active' ? 'active' : 'pending'}`}>Active</div>
+                {props.status === 'Active' ? <StatusDone /> : <StatusPending />}
+                <div className={`status-item ${props.status === 'Active' ? 'done' : 'pending'}`}>Active</div>
             </div>
         </div>
     );

@@ -1,0 +1,51 @@
+.process-list-container {
+    border: 1px solid #000;
+}
+
+.process-list-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    border-bottom: 1px solid #000;
+    border-top: 1px solid #000;
+}
+
+.process-list-item:hover {
+    background-color: #ccc;
+    cursor: pointer;
+}
+
+.process-list-item-head {
+    background-color: #ccc;
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    border-bottom: 1px solid #000;
+    border-top: 1px solid #000;
+}
+.process-list-item-head:hover {
+    cursor: default;
+}
+
+.process-list-item-head > div,
+.process-list-item > div {
+    flex: 1;
+    text-align: left;
+}
+
+.process-list-header {
+    display: flex;
+    justify-content: flex-end;
+    padding: 20px;
+}
+
+.process-list-add {
+    padding: 20px;
+    background-color: #0be200;
+}
+
+.process-list-add:hover {
+    background-color: #1c7018;
+    cursor: pointer;
+    color: #fff;
+}

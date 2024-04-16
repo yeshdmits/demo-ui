@@ -149,9 +149,7 @@ const HelloComponent = () => {
                     </div>}
                 </section>
                 <section>
-                    <div className="hello-acc-header" onClick={handleShowSkill}>
-                        <CreateProduct />
-                    </div>
+                    <CreateProduct />
                 </section>
             </div>
         </div >
