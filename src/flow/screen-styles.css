@@ -5,13 +5,15 @@
         padding: 0;
         margin: 0;
     }
+
     .process-overview {
-        padding: 0;
+        padding: 0.5em;
         margin: 0;
         display: flex;
         flex-direction: column;
         align-items: center;
     }
+
     .product-container {
         max-width: 100vw;
         min-width: 100vw;
@@ -22,8 +24,9 @@
 
     .product-container-header {
         justify-content: space-between;
-        
+
     }
+
 
     .product-metadata {
         padding: 0;
@@ -33,6 +36,7 @@
         padding-top: 1vh;
         padding-bottom: 1vh;
     }
+
     .product-metadata-text {
         padding: 0;
         margin: 0;
@@ -45,12 +49,146 @@
         margin: 0;
         padding-top: 1vh;
         padding-bottom: 1vh;
-        width: 80vw;
         text-align: center;
+        min-height: 4vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
     }
+
+    .product-button-submit {
+        padding: 0;
+        margin: 0;
+        padding-top: 1vh;
+        padding-bottom: 1vh;
+        text-align: center;
+        min-height: 4vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: #0075237a;
+    }
+
+    .product-button.disabled {
+        padding: 0;
+        margin: 0;
+        padding-top: 1vh;
+        padding-bottom: 1vh;
+        text-align: center;
+        min-height: 4vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        max-width: auto !important;
+    }
+
     .product-statusbar-container {
         padding: 0;
         margin: 2vh auto;
         max-width: 80vw;
     }
+
+    .rjsf {
+        border: 0;
+        min-width: 80vw;
+    }
+
+    .product-form-submit {
+        display: flex;
+        flex-direction: column-reverse;
+        min-height: 20vh;
+        justify-content: space-around;
+    }
+
+    .dialog-json-task {
+        display: flex;
+        justify-content: center;
+    }
+
+    .form-group {
+        margin: 1vh auto;
+        font-size: 16px;
+    }
+
+    .product-button-cancel {
+        padding: 0;
+        margin: 0;
+        padding-top: 1vh;
+        padding-bottom: 1vh;
+        text-align: center;
+        min-height: 4vh;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .table-row {
+        display: flex;
+        justify-content: space-around;
+    }
+
+    .table-cell {
+        width: auto;
+    }
+
+    .product-table {
+        min-width: 100vw;
+        border-collapse: collapse;
+    }
+
+    .process-list-add {
+        padding: 20px;
+        width: 100vw;
+        color: #fff;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+
+    /* TABLE */
+    .table-head {
+        min-width: 8vh;
+        max-width: 8vh;
+        padding: 0;
+        margin: 0;
+        text-wrap: wrap;
+    }
+
+    .table-cell {
+        max-width: 8vh;
+        min-width: 8vh;
+        padding: 0;
+        margin: 0;
+        font-size: 12px;
+    }
+
+    .button-view {
+        cursor: pointer;
+        color: #000;
+        text-decoration: underline;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .react-pdf__Page__canvas {
+        margin: 0 auto;
+        width: 100% !important;
+        height: 60% !important;
+    }
+
+    .document-pdf {
+
+        height: 100% !important;
+    }
+
+    .react-pdf__Page__textContent.textLayer {
+        height: 100% !important;
+
+    }
+
+    /*  */
 }

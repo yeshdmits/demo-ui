@@ -5,8 +5,9 @@ import { useNavigate, useLocation } from 'react-router-dom';
 import StatusBar from "./StatusBar";
 import { getProduct, getDocContent } from "../service/ApiService";
 import { formatDate } from "../service/Utils";
-import { ReactComponent as StatusDone } from '../svgs/status-done.svg'
-import { ReactComponent as StatusInProgress } from '../svgs/status-inprogress.svg'
+import TaskStatus from "./TaskStatus";
+import DocumentStatus from "./DocumentStatus";
+
 
 const ProcessOverview = () => {
     const { state } = useLocation();
@@ -84,12 +85,8 @@ const ProcessOverview = () => {
 
     useEffect(() => {
         const fetchDataFromApi = async () => {
-            try {
-                const fetchedData = await getProduct(state.processId, state.processInstanceId); // Call fetchData function
-                setProcessData(fetchedData);
-            } catch {
-                console.log("Fail")
-            }
+            const fetchedData = await getProduct(state.processId, state.processInstanceId);
+            setProcessData(fetchedData);
         };
 
         fetchDataFromApi();
@@ -119,62 +116,59 @@ const ProcessOverview = () => {
             </div>
             <div className="product-container">
                 <div className="product-title">Task Overview</div>
-                <div className="product-table">
-                    <table className="product-tasks-list">
-                        <thead>
-                            <tr className="task-row">
-                                <th>Task</th>
-                                <th>Resolution</th>
-                                <th>Last Action</th>
-                                <th>Updated By</th>
-                                <th></th>
+                <table className="product-table">
+                    <thead>
+                        <tr className="table-row">
+                            <th className="table-head">Task</th>
+                            <th className="table-head">Resolution</th>
+                            <th className="table-head">Last Action</th>
+                            <th className="table-head">Updated By</th>
+                            <th className="table-head"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {processData.taskList && processData.taskList.map((task: any, id: number) =>
+                            <tr key={id} className="table-row">
+                                <td className="table-cell">{task.taskName}</td>
+                                <td className="table-cell">
+                                    <TaskStatus taskStatus={task.taskStatus} />
+                                </td>
+
+
+                                <td className="table-cell">{formatDate(task.modifiedAt)}</td>
+                                <td className="table-cell">{task.modifiedBy}</td>
+                                <td className="table-cell">{task.taskStatus !== 'In progress' && <div className='button-view' onClick={() => handleViewTask(task)}>view</div>}</td>
                             </tr>
-                        </thead>
-                        <tbody>
-                            {processData.taskList && processData.taskList.map((task: any, id: number) =>
-                                <tr key={id} className="task-row">
-                                    <td>{task.taskName}</td>
-                                    <td>
-                                        <div className="table-status">
-                                            {task.taskStatus === 'In progress' ? <StatusInProgress width={'20px'} /> : <StatusDone width={'20px'} />}
-                                            <div className="table-status-text">{task.taskStatus}</div>
-                                        </div>
-                                    </td>
-                                    <td>{formatDate(task.modifiedAt)}</td>
-                                    <td>{task.modifiedBy}</td>
-                                    <td>{task.taskStatus !== 'In progress' && <div className='button-view' onClick={() => handleViewTask(task)}>view</div>}</td>
-                                </tr>
-                            )}
-                        </tbody>
-                    </table>
-                </div>
+                        )}
+                    </tbody>
+                </table>
             </div>
             <div className="product-container">
                 <div className="product-title">Documents</div>
-                <div className="product-table">
-                    <table className="product-documents-list">
-                        <thead>
-                            <tr className="documents-row">
-                                <th>Document</th>
-                                <th>Status</th>
-                                <th>Last Action</th>
-                                <th>Updated By</th>
-                                <th></th>
+                <table className="product-table">
+                    <thead>
+                        <tr className="table-row">
+                            <th className="table-head">Document</th>
+                            <th className="table-head">Status</th>
+                            <th className="table-head">Last Action</th>
+                            <th className="table-head">Updated By</th>
+                            <th className="table-head"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {processData.documentList && processData.documentList.map((doc: any, id: number) =>
+                            <tr key={id} className="table-row">
+                                <td className="table-cell">{doc.documentName}</td>
+                                <td className="table-cell">
+                                    <DocumentStatus docStatus={doc.documentStatus} />
+                                </td>
+                                <td className="table-cell">{formatDate(doc.modifiedAt)}</td>
+                                <td className="table-cell">{doc.modifiedBy}</td>
+                                <td className="table-cell"><div className='button-view' onClick={() => handleViewDocument(doc)}>view</div></td>
                             </tr>
-                        </thead>
-                        <tbody>
-                            {processData.documentList && processData.documentList.map((doc: any, id: number) =>
-                                <tr key={id} className="documents-row">
-                                    <td>{doc.documentName}</td>
-                                    <td>{doc.documentStatus}</td>
-                                    <td>{formatDate(doc.modifiedAt)}</td>
-                                    <td>{doc.modifiedBy}</td>
-                                    <td><div className='button-view' onClick={() => handleViewDocument(doc)}>view</div></td>
-                                </tr>
-                            )}
-                        </tbody>
-                    </table>
-                </div>
+                        )}
+                    </tbody>
+                </table>
             </div>
         </div>
     );

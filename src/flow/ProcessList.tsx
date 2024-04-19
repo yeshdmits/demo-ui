@@ -1,6 +1,7 @@
 import React, { useEffect, useState, } from "react";
 import { getProductList, createProduct } from "../service/ApiService";
 import "./ProcessList.css"
+import "./screen-styles.css"
 import { useNavigate } from 'react-router-dom';
 import { formatDate } from "../service/Utils";
 
@@ -29,12 +30,8 @@ const ProcessList = () => {
 
     useEffect(() => {
         const fetchDataFromApi = async () => {
-            try {
-                const fetchedData = await getProductList(); // Call fetchData function
-                setProductList(fetchedData);
-            } catch {
-                console.log("Fail")
-            }
+            const fetchedData = await getProductList(); // Call fetchData function
+            setProductList(fetchedData);
         };
 
         fetchDataFromApi();

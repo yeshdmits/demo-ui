@@ -14,15 +14,15 @@ const ViewPdfComponent = (props: any) => {
     useEffect(() => {
         const renderDocument = () => {
             getDocContent(props.viewDoc.documentId)
-            .then((response: any) => {
-                setPdfUrl(window.URL.createObjectURL(response));
-            })
+                .then((response: any) => {
+                    setPdfUrl(window.URL.createObjectURL(response));
+                })
         }
         renderDocument();
     }, [props.viewDoc]);
 
     return (
-        <div>
+        <div className="document-pdf">
             {pdfUrl && <Document
                 file={pdfUrl}
                 onLoadSuccess={onDocumentLoadSuccess}

@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useNavigate, useLocation } from 'react-router-dom';
 import { completeTask } from "../service/ApiService";
 import ViewPdfComponent from "./ViewPdfComponent";
+import "./ProcessOverview.css"
 
 const TaskCompleteCustom = () => {
     const [viewDoc, setViewDoc] = useState<any>(null);
@@ -21,7 +22,7 @@ const TaskCompleteCustom = () => {
                     processId: state.processId
                 }
             }
-        ))
+        ));
     }
 
     const handleCancel = () => {
@@ -41,24 +42,38 @@ const TaskCompleteCustom = () => {
 
     return (
         <div className="task-complete-form">
-            <div className="product-title">{taskName}</div>
-            {componentProps && componentProps.map((doc: any, id: number) =>
-                <div key={id} className="customComponentList">
-                    <div>
-                        {doc.documentName}
-                    </div>
-                    <div>
-                        {doc.documentStatus}
-                    </div>
-                    <div>
-                        <div className='button-view' onClick={() => renderDocument(doc)}>view</div>
-                    </div>
-                </div>
-            )}
+            <div className="product-container">
+
+                <div className="product-title">{taskName}</div>
+                <table className="product-table">
+                    <thead>
+                        <tr className="table-row">
+                            <th className="table-head">Document Name</th>
+                            <th className="table-head">Status</th>
+                            <th className="table-head">Last Action</th>
+                            <th className="table-head">Updated By</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {componentProps && componentProps.map((doc: any, id: number) =>
+                            <tr key={id} className="table-row">
+                                <td className="table-cell">{doc.documentName}</td>
+                                <td className="table-cell">{doc.documentStatus}</td>
+                                <td className="table-cell">{doc.modifiedAt}</td>
+                                <td className="table-cell">{doc.modifiedBy}</td>
+                                <td className="table-cell">
+                                    <div className='button-view' onClick={() => renderDocument(doc)}>view</div>
+                                </td>
+                            </tr>
+                        )}
+                    </tbody>
+                </table>
+            </div>
             <div>
                 {showPdf && <ViewPdfComponent viewDoc={viewDoc} />}
             </div>
-            <div className="product-form-custom-submit">
+            <div className="product-form-submit">
                 <div className="product-button-cancel" onClick={handleCancel}>Cancel</div>
                 <div className='product-button' onClick={handleSubmit}>Submit</div>
             </div>
