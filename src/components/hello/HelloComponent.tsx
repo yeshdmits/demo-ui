@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-// import './display-styles.css'
 import pdf from '../../types.s';
 import CreateProduct from './CreateProduct';
 
@@ -124,8 +123,8 @@ const HelloComponent = () => {
                     </div>
                 </header>
                 <section className="shadow-xl grid gap-5 bg-slate-100 sm:text-center ">
-                    <div className={`rounded-t-lg px-5 min-h-24 flex justify-center items-center hover:cursor-pointer hover:bg-slate-300 ${showWork ? 'bg-slate-300 sticky top-0 left-0 right-0': "bg-slate-100"}`}
-                     onClick={handleShowWork}>
+                    <div className={`rounded-t-lg px-5 min-h-24 flex justify-center items-center hover:cursor-pointer hover:bg-slate-300 ${showWork ? 'bg-slate-300 sticky top-0 left-0 right-0' : "bg-slate-100"}`}
+                        onClick={handleShowWork}>
                         <div className='text-3xl'>Work Experience</div>
                     </div>
                     {showWork && jobs.map((job, index) => (
@@ -142,7 +141,7 @@ const HelloComponent = () => {
                     ))}
                 </section>
                 <section className="shadow-xl grid gap-5 bg-slate-100 sm:text-center">
-                    <div className={`rounded-t-lg px-5 min-h-24 flex justify-center items-center hover:cursor-pointer hover:bg-slate-300 ${showSkill ? 'bg-slate-300 sticky top-0 left-0 right-0': "bg-slate-100"}`}
+                    <div className={`rounded-t-lg px-5 min-h-24 flex justify-center items-center hover:cursor-pointer hover:bg-slate-300 ${showSkill ? 'bg-slate-300 sticky top-0 left-0 right-0' : "bg-slate-100"}`}
                         onClick={handleShowSkill}>
                         <div className='text-3xl'>Skills</div>
                     </div>
@@ -159,10 +158,7 @@ const HelloComponent = () => {
                     }
                 </section>
                 <section className="shadow-xl grid gap-5">
-                    <div className="text-3xl bg-slate-100 rounded-t-lg px-5 min-h-24 flex justify-center items-center hover:cursor-pointer hover:bg-slate-300" onClick={handleShowSkill}>
-                        <CreateProduct />
-                    </div>
-
+                    <CreateProduct />
                 </section>
             </div>
         </div >

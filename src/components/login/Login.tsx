@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-// import './Login.css';
 import { requestLogin } from "../../service/ApiService";
 import { useNavigate } from 'react-router-dom';
 
@@ -31,37 +30,37 @@ const LoginComponent = () => {
 
 
     return (
-        <div className="login-container">
-            <div className="login-form">
-                <h2>Login</h2>
-                <div className="input-group-login">
-                    <div className='input-label'>
-                        <input
-                            className="task-input"
-                            type="text"
-                            name="username"
-                            value={username}
-                            onChange={handleUsername}
-                        />
-                        <label>Username</label>
-                    </div>
+        <div className="flex min-h-screen items-center justify-center bg-gray-100">
+            <div className="-full max-w-md px-8 py-4 bg-white rounded-lg shadow-md">
+                <div className="text-2xl text-center font-bold mb-4">Login</div>
+                <div className="mb-6">
+                    <label className="block text-sm font-medium text-gray-700">Username</label>
+                    <input
+                        className="-full text-base px-3 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-1 focus:ring-indigo-500"
+                        type="text"
+                        name="username"
+                        value={username}
+                        onChange={handleUsername}
+                    />
                 </div>
-                <div className="input-group-login">
-                    <div className='input-label'>
-                        <input
-                            className="task-input"
-                            type="password"
-                            name="password"
-                            value={password}
-                            onChange={handlePassword}
-                        />
-                        <label>Password</label>
-                    </div>
+                <div className="mb-6">
+                    <label className="block text-sm font-medium text-gray-700">Password</label>
+                    <input
+                        className="-full text-base px-3 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-1 focus:ring-indigo-500"
+                        type="password"
+                        name="password"
+                        value={password}
+                        onChange={handlePassword}
+                    />
                 </div>
-                <button onClick={submitLogin}>Login</button>
+                <div className="w-full px-3 py-2 text-center rounded-lg bg-indigo-600 text-white font-medium hover:bg-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500"
+                    onClick={submitLogin}
+                >Login</div>
 
                 {error &&
-                    <div className="error-message">{error.message}</div>
+                    <div className="m-4 text-sm text-red-500 min-h-8 flex justify-center items-center">
+                        {error.message}
+                    </div>
                 }
             </div>
         </div>

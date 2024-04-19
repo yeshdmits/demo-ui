@@ -9,7 +9,7 @@ const CreateProduct = () => {
     }
 
     return (
-        <div className="hello-acc-header" onClick={callProductList}>
+        <div className="text-3xl bg-slate-100 rounded-t-lg px-5 min-h-24 flex justify-center items-center hover:cursor-pointer hover:bg-slate-300" onClick={callProductList}>
             Create Product
         </div>
 
