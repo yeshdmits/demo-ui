@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
-import './display-styles.css'
-import { Link } from "react-router-dom";
+// import './display-styles.css'
 import pdf from '../../types.s';
 import CreateProduct from './CreateProduct';
 
@@ -51,7 +50,45 @@ const jobs = [
     }
 ];
 
+const skills = [
+    {
+        title: "JAVA",
+        description: "Java SE | Java EE | Spring Framework (Boot, Security, MVC) | Hibernate | Apache | Micronaut"
+    },
+    {
+        title: "QA",
+        description: "JUnit | WireMock | Mockito"
+    },
+    {
+        title: "DB",
+        description: "MySQL | PostgreSQL | Oracle | MongoDB | MSQL"
+    },
+    {
+        title: "UI",
+        description: "JavaScript | TypeScript | HTML/CSS | React | Angular"
+    },
+    {
+        title: "CI/CD",
+        description: "Jenkins | GitLab CI/CD | GitHub Actions"
+    },
+    {
+        title: "DevOps",
+        description: "Docker | Kubernetes | Helm | Scotty | AWS | Azure"
+    },
+    {
+        title: "DevSec",
+        description: "Spring Security | OAuth2 Client/Resource Server | Json Web Token | LDAP"
+    },
+    {
+        title: "DevOps Tools",
+        description: "Infrastructure as code (IaC) | Dynatrace | Prometheus | Grafana"
+    },
+];
 
+<div className="skill-group">
+    <h3>DevOps Tools</h3>
+    <p>Infrastructure as code (IaC), automation, monitoring tools (Prometheus, Grafana)</p>
+</div>
 const HelloComponent = () => {
     const [showWork, setShowWork] = useState<boolean>(false)
     const [showSkill, setShowSkill] = useState<boolean>(false)
@@ -71,89 +108,66 @@ const HelloComponent = () => {
 
 
     return (
-        <div>
-            <div className="landing-page">
-                <header className='hello-header'>
-                    <h1 className='hello-name'>Dmitry Yeshenko</h1>
-                    <p className='hello-info'>Java Developer with expertise in designing, developing, and maintaining software applications.</p>
-                    <p className='hello-info'>Contact me: <Link
-                        to='#'
-                        onClick={(e) => {
-                            window.location.href = "mailto:yeshenkodmit@gmail.com";
-                            e.preventDefault();
-                        }}
-                    >
-                        yeshenkodmit@gmail.com
-                    </Link></p>
-                    <p className='hello-cv' onClick={downloadCV}>View CV</p>
-
+        <div className='flex flex-col items-center justify-center'>
+            <div className="px-5 container hover:cursor-default sm:min-w-full sm:p-1">
+                <header className='flex flex-col justify-between align-middle min-h-40 items-stretch'>
+                    <div className='flex justify-center items-center font-bold text-4xl tracking-wide min-h-28 '>Dmitry Yeshenko</div>
+                    <div className='flex justify-center items-center font-mono text-xl tracking-wide min-h-20 sm:text-center'>Java Developer with expertise in designing, developing, and maintaining software applications.</div>
+                    <div className='flex justify-between items-center font-mono text-xl tracking-wide min-h-20 sm:flex-col sm:min-h-96 sm:justify-around'>
+                        <div className='basis-1/4 px-5 text-3xl'>Contact me:</div>
+                        <div className='basis-1/4 bg-teal-500 min-h-20 flex items-center px-5 rounded-full text-white hover:cursor-pointer hover:bg-teal-400 sm:min-w-full sm:justify-center'
+                            onClick={() => window.location.href = "mailto:yeshenkodmit@gmail.com"}
+                        >yeshenkodmit@gmail.com</div>
+                        <div className='basis-1/4 bg-teal-500 min-h-20 flex justify-center items-center px-5 rounded-full text-white hover:cursor-pointer hover:bg-teal-400 sm:min-w-full sm:justify-center'
+                            onClick={downloadCV}
+                        >View CV</div>
+                    </div>
                 </header>
-                <section className="work-experience">
-                    <div className="hello-acc-header" onClick={handleShowWork}>
-                        <h2>Work Experience</h2>
+                <section className="shadow-xl grid gap-5 bg-slate-100 sm:text-center ">
+                    <div className={`rounded-t-lg px-5 min-h-24 flex justify-center items-center hover:cursor-pointer hover:bg-slate-300 ${showWork ? 'bg-slate-300 sticky top-0 left-0 right-0': "bg-slate-100"}`}
+                     onClick={handleShowWork}>
+                        <div className='text-3xl'>Work Experience</div>
                     </div>
                     {showWork && jobs.map((job, index) => (
-                        <div key={index} className="hello-job">
-                            <h3>{job.title}</h3>
-                            <p>{job.date}</p>
-                            <p>{job.company}</p>
+                        <div key={index} className="px-5 bg-slate-100 grid gap-4">
+                            <div className='text-3xl'>{job.title}</div>
+                            <div className='text-2xl'>{job.date}</div>
+                            <div className='text-xl'>{job.company}</div>
                             <ul>
                                 {job.description.map((point, i) => (
-                                    <li key={i}>{point}</li>
+                                    <li key={i} className='leading-loose text-lg'>{point}</li>
                                 ))}
                             </ul>
                         </div>
                     ))}
                 </section>
-                <section className="skills">
-                    <div className="hello-acc-header" onClick={handleShowSkill}>
-                        <h2>Skills</h2>
+                <section className="shadow-xl grid gap-5 bg-slate-100 sm:text-center">
+                    <div className={`rounded-t-lg px-5 min-h-24 flex justify-center items-center hover:cursor-pointer hover:bg-slate-300 ${showSkill ? 'bg-slate-300 sticky top-0 left-0 right-0': "bg-slate-100"}`}
+                        onClick={handleShowSkill}>
+                        <div className='text-3xl'>Skills</div>
                     </div>
-                    {showSkill && <div className="skills-list">
-                        <div className="skill-group">
-                            <h3>Java</h3>
-                            <p>Java SE, Java EE, Spring Framework (Boot, Security, MVC), Hibernate, Apache, Micronaut</p>
+                    {showSkill &&
+                        <div className='grid grid-cols-2 gap-4 sm:grid-cols-1'>
+
+                            {skills.map((skill, index) => (
+                                <div key={index} className="px-5 bg-slate-100 grid gap-4 min-h-40 p-7 rounded-md hover:cursor-default">
+                                    <div className='text-3xl'>{skill.title}</div>
+                                    <div className='text-2xl'>{skill.description}</div>
+                                </div>))}
                         </div>
-                        <div className="skill-group">
-                            <h3>Testing</h3>
-                            <p>JUnit, WireMock, Mockito</p>
-                        </div>
-                        <div className="skill-group">
-                            <h3>Databases</h3>
-                            <p>MySQL, PostgreSQL, Oracle, MongoDB</p>
-                        </div>
-                        <div className="skill-group">
-                            <h3>Front-end</h3>
-                            <p>JavaScript, HTML, CSS, React, Angular</p>
-                        </div>
-                        <div className="skill-group">
-                            <h3>CI/CD</h3>
-                            <p>Jenkins, GitLab CI/CD</p>
-                        </div>
-                        <div className="skill-group">
-                            <h3>DevOps</h3>
-                            <p>Docker, Kubernetes, AWS, Azure</p>
-                        </div>
-                        <div className="skill-group">
-                            <h3>Security</h3>
-                            <p>Basic, JWT, Oauth2, LDAP</p>
-                        </div>
-                        <div className="skill-group">
-                            <h3>Performance Optimization</h3>
-                            <p>Profiling, load testing, code refactoring</p>
-                        </div>
-                        <div className="skill-group">
-                            <h3>DevOps Tools</h3>
-                            <p>Infrastructure as code (IaC), automation, monitoring tools (Prometheus, Grafana)</p>
-                        </div>
-                    </div>}
+
+                    }
                 </section>
-                <section>
-                    <CreateProduct />
+                <section className="shadow-xl grid gap-5">
+                    <div className="text-3xl bg-slate-100 rounded-t-lg px-5 min-h-24 flex justify-center items-center hover:cursor-pointer hover:bg-slate-300" onClick={handleShowSkill}>
+                        <CreateProduct />
+                    </div>
+
                 </section>
             </div>
         </div >
     );
 }
+
 
 export default HelloComponent;

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import "./ProcessOverview.css"
-import "./screen-styles.css"
+// import "./ProcessOverview.css"
+// import "./screen-styles.css"
 import { useNavigate, useLocation } from 'react-router-dom';
 import StatusBar from "./StatusBar";
 import { getProduct, getDocContent } from "../service/ApiService";

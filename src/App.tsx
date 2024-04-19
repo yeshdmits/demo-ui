@@ -13,7 +13,6 @@ import 'react-pdf/dist/Page/AnnotationLayer.css';
 import ProcessList from './flow/ProcessList';
 import LoginComponent from './components/login/Login';
 import AuthLayout from './components/login/AuthLayout';
-import ErrorBoundary from './components/login/ErrorComponent';
 import ErrorComponent from './components/login/ErrorComponent';
 
 pdfjs.GlobalWorkerOptions.workerSrc = new URL(

@@ -1,7 +1,7 @@
 import React, { useEffect, useState, } from "react";
 import { getProductList, createProduct } from "../service/ApiService";
-import "./ProcessList.css"
-import "./screen-styles.css"
+// import "./ProcessList.css"
+// import "./screen-styles.css"
 import { useNavigate } from 'react-router-dom';
 import { formatDate } from "../service/Utils";
 

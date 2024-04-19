@@ -12,7 +12,7 @@ const AuthLayout: any = (props: any) => {
         if (!token) {
             navigate("/login", { state: state });;
         }
-    }, [navigate]);
+    }, [navigate, props.url, state]);
     return (
         <Outlet />
     );

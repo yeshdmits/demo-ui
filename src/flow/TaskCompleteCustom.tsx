@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useNavigate, useLocation } from 'react-router-dom';
 import { completeTask } from "../service/ApiService";
 import ViewPdfComponent from "./ViewPdfComponent";
-import "./ProcessOverview.css"
+// import "./ProcessOverview.css"
 
 const TaskCompleteCustom = () => {
     const [viewDoc, setViewDoc] = useState<any>(null);

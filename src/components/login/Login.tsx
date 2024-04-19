@@ -1,12 +1,11 @@
 import React, { useState } from "react";
-import './Login.css';
+// import './Login.css';
 import { requestLogin } from "../../service/ApiService";
 import { useNavigate } from 'react-router-dom';
 
 const LoginComponent = () => {
     const [username, setUsername] = useState<string>("");
     const [password, setPassword] = useState<string>("");
-    const [showPass, setShowPass] = useState<boolean>(false);
     const [error, setError] = useState<any>();
     const navigate = useNavigate();
 
@@ -51,7 +50,7 @@ const LoginComponent = () => {
                     <div className='input-label'>
                         <input
                             className="task-input"
-                            type={showPass ? "text":"password"}
+                            type="password"
                             name="password"
                             value={password}
                             onChange={handlePassword}
