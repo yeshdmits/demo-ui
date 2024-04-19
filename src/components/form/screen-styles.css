@@ -131,55 +131,5 @@
 
 
 
-    /* Styles for the entire form */
-    .rjsf {
-        width: 90%;
-        border: 1px solid #ccc;
-        padding: 0;
-        margin: 0;
-        margin-top: 10px;
-        border-radius: 5px;
-    }
-
-    #root {
-        margin: 0;
-        padding: 0;
-        border: 0;
-    }
-
-    /* Styles for the form description */
-    .field-description {
-        margin-bottom: 20px;
-    }
-
-    /* Styles for form fields */
-    .form-group {
-        margin-bottom: 15px;
-    }
-
-    /* Styles for field labels */
-    .control-label {
-        font-weight: bold;
-        margin-bottom: 5px;
-    }
-
-    /* Styles for required indicator */
-    .required {
-        color: red;
-    }
-
-    /* Styles for form inputs */
-    .form-control {
-        width: 95%;
-        padding: 10px;
-        border: 1px solid #ccc;
-        border-radius: 3px;
-    }
-
-    /* Styles for error messages */
-    .text-danger {
-        color: red;
-        list-style: none;
-        font-size: 12px;
-    }
+   
 }

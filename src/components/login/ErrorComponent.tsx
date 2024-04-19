@@ -1,5 +1,5 @@
 import React from 'react';
-import { useLocation } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 class CustomError extends Error {
     statusCode: number;
@@ -14,11 +14,22 @@ class CustomError extends Error {
 export { CustomError };
 
 
-const ErrorComponent = () => {
-    const {state} = useLocation();
+const ErrorComponet = (props: any) => {
+    const navigate = useNavigate();
+    console.log(props.error.response)
     return (
-        <div>{state.error.message}</div>
+        <div className='flex min-h-screen items-center justify-around flex-col bg-gray-100'>
+            {(props.error.response.status === 401 || props.error.response.status === 403) &&
+                <div className='bg-red-400 rounded-full text-wrap px-6 text-center min-h-24 flex items-center text-white'>
+                    You don't have access to view this page. Please contact administrator</div>
+            }
+            <div className='bg-white rounded-full text-wrap px-2 text-center min-h-16 flex items-center border hover:cursor-pointer hover:bg-slate-100'
+                onClick={() => navigate('/')}
+            >
+                Go to Home Page
+            </div>
+        </div>
     );
 }
 
-export default ErrorComponent;
+export default ErrorComponet;

@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import TaskListContainer from './TaskListContainer';
 import { ReactComponent as ViewSvg } from '../svgs/open-process.svg';
 import { ReactComponent as HideSvg } from '../svgs/close.svg';
-import './screen-styles.css';
-import './display-styles.css';
+// import './screen-styles.css';
+// import './display-styles.css';
 import { useLocation } from 'react-router-dom';
 
 

@@ -5,15 +5,14 @@ import { HashRouter, Routes, Route } from 'react-router-dom';
 import DisplayJsonFormDialog from './components/form/DisplayJsonFormDialog';
 import HelloComponent from './components/hello/HelloComponent';
 import ProcessOverview from './flow/ProcessOverview';
-import TaskCompleteJson from './flow/TaskCompleteJson';
-import TaskCompleteCustom from './flow/TaskCompleteCustom';
+import TaskCompleteJson from './flow/task/TaskCompleteJson';
+import TaskCompleteCustom from './flow/task/TaskCompleteCustom';
 import { pdfjs } from 'react-pdf';
 import 'react-pdf/dist/Page/TextLayer.css';
 import 'react-pdf/dist/Page/AnnotationLayer.css';
 import ProcessList from './flow/ProcessList';
 import LoginComponent from './components/login/Login';
 import AuthLayout from './components/login/AuthLayout';
-import ErrorComponent from './components/login/ErrorComponent';
 
 pdfjs.GlobalWorkerOptions.workerSrc = new URL(
   'pdfjs-dist/build/pdf.worker.min.js',
@@ -44,7 +43,6 @@ function App() {
         </Route>
 
         <Route path="/login" element={<LoginComponent />} />
-        <Route path="/error" element={<ErrorComponent />} />
       </Routes>
     </HashRouter>
   );

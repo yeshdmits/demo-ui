@@ -4,19 +4,24 @@ import { ReactComponent as StatusInProgress } from '../svgs/status-inprogress.sv
 import { ReactComponent as StatusPending } from '../svgs/status-pending.svg'
 const StatusBar = (props: any) => {
     return (
-        <div className="product-statusbar-container">
-            {/* <div className={`status-item ${processData.processStatus === 'Created' ? 'active' : ''}`}>Created</div> */}
-            <div className="product-status">
+        <div className="flex justify-around min-h-24 items-center">
+            <div className="flex flex-col items-center justify-center">
                 {props.status === 'Created' ? <StatusInProgress /> : <StatusDone />}
-                <div className={`status-item ${props.status === 'Created' ? 'active' : 'done'}`}>Created</div>
+                <div className={`mt-3 ${props.status === 'Created' ? 'text-blue-400' : 'text-green-500'}`}>
+                    Created
+                </div>
             </div>
-            <div className="product-status">
+            <div className="flex flex-col items-center justify-center">
                 {props.status === 'In Progress' ? <StatusInProgress /> : props.status === 'Created' ? <StatusPending /> : <StatusDone />}
-                <div className={`status-item ${props.status === 'In Progress' ? 'active' : props.status === 'Created' ? 'pending' : 'done'}`}>In Progress</div>
+                <div className={`mt-3 ${props.status === 'In Progress' ? 'text-blue-400' : props.status === 'Created' ? 'text-slate-500' : 'text-green-500'}`}>
+                    In Progress
+                </div>
             </div>
-            <div className="product-status">
+            <div className="flex flex-col items-center justify-center">
                 {props.status === 'Active' ? <StatusDone /> : <StatusPending />}
-                <div className={`status-item ${props.status === 'Active' ? 'done' : 'pending'}`}>Active</div>
+                <div className={`mt-3 ${props.status === 'Active' ? 'text-green-500' : 'text-slate-500'}`}>
+                    Active
+                </div>
             </div>
         </div>
     );

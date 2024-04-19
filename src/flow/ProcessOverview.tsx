@@ -7,6 +7,7 @@ import { getProduct, getDocContent } from "../service/ApiService";
 import { formatDate } from "../service/Utils";
 import TaskStatus from "./TaskStatus";
 import DocumentStatus from "./DocumentStatus";
+import { ReactComponent as GoBack } from '../svgs/go-back.svg'
 
 
 const ProcessOverview = () => {
@@ -55,6 +56,10 @@ const ProcessOverview = () => {
             })
     }
     const handleViewTask = (task: any) => {
+        if (task.taskStatus === 'In progress') {
+            handleTaskComplete();
+            return;
+        }
         console.log(task)
         if (task.customTaskName) {
             navigate("/process/task/custom", {
@@ -93,82 +98,116 @@ const ProcessOverview = () => {
     }, [state.processId, state.processInstanceId]);
 
     return (
-        <div className="process-overview">
-            <div className="product-container">
-                <div className="product-container-header">
-                    <div className="product-title">{processData.displayName}</div>
-                    <div className="product-title" onClick={handleClose}>X</div>
+        <div>
+            <div className="flex flex-col">
+                <div className="flex items-center shadow-lg">
+                    <div className="flex-none p-4 text-4xl rounded-full hover:bg-slate-100 hover:cursor-pointer"
+                        onClick={handleClose}
+                    ><GoBack /></div>
+                    <div
+                        className="flex-1 text-4xl hover:cursor-default text-center"
+                    >{processData.displayName}</div>
+
                 </div>
 
                 {processData.metadata &&
-                    <div className="product-metadata">
-                        <div className="product-metadata-text">You have an open task: </div>
-                        <div className="product-button" onClick={handleTaskComplete}>Work on task</div>
+                    <div className="text-center mt-4 mb-4 rounded-full text-slate-100 text-2xl hover:cursor-pointer bg-green-600 p-4" onClick={handleTaskComplete}>
+                        Work on task
                     </div>
                 }
 
             </div>
-            <div className="product-container">
-                <div className="product-title">Activation Status</div>
+            <div className="shadow-md mb-4 w-full rounded-t-[2rem]">
+                <div className="flex justify-center items-center text-2xl mt-6 rounded-t-[2rem] bg-slate-300 min-h-24">Activation Status</div>
                 <StatusBar status={processData.processStatus} />
             </div>
             <div className="product-summary">
             </div>
-            <div className="product-container">
-                <div className="product-title">Task Overview</div>
-                <table className="product-table">
-                    <thead>
-                        <tr className="table-row">
-                            <th className="table-head">Task</th>
-                            <th className="table-head">Resolution</th>
-                            <th className="table-head">Last Action</th>
-                            <th className="table-head">Updated By</th>
-                            <th className="table-head"></th>
-                        </tr>
-                    </thead>
-                    <tbody>
+            <div className="shadow-md mb-4 w-full rounded-t-[2rem]">
+                <div className="flex justify-center items-center text-2xl mt-6 rounded-t-[2rem] bg-slate-300 min-h-20">
+                    Task Overview
+                </div>
+                <div className="">
+                    <div className="bg-gray-200 px-2 py-4">
+                        <div className="grid grid-cols-4 gap-4">
+                            <div className="flex items-center justify-center hover:cursor-default">
+                                Task
+                            </div>
+                            <div className="flex items-center justify-center hover:cursor-default">
+                                Resolution
+                            </div>
+                            <div className="flex items-center justify-center hover:cursor-default">
+                                Last Action
+                            </div>
+                            <div className="flex items-center justify-center hover:cursor-default">
+                                Updated By
+                            </div>
+                        </div>
+                    </div>
+                    <div className="">
                         {processData.taskList && processData.taskList.map((task: any, id: number) =>
-                            <tr key={id} className="table-row">
-                                <td className="table-cell">{task.taskName}</td>
-                                <td className="table-cell">
+                            <div key={id} onClick={() => handleViewTask(task)}
+                                className="grid grid-cols-4 gap-4 border-t border-gray-300 py-2 cursor-pointer hover:bg-gray-100"
+                            >
+                                <div className="p-3 flex items-center justify-center">
+                                    {task.taskName}
+                                </div>
+                                <div className="p-3 flex items-center justify-center">
                                     <TaskStatus taskStatus={task.taskStatus} />
-                                </td>
-
-
-                                <td className="table-cell">{formatDate(task.modifiedAt)}</td>
-                                <td className="table-cell">{task.modifiedBy}</td>
-                                <td className="table-cell">{task.taskStatus !== 'In progress' && <div className='button-view' onClick={() => handleViewTask(task)}>view</div>}</td>
-                            </tr>
+                                </div>
+                                <div className="p-3 flex items-center justify-center">
+                                    {formatDate(task.modifiedAt)}
+                                </div>
+                                <div className="p-3 flex items-center justify-center">
+                                    {task.modifiedBy}
+                                </div>
+                            </div>
                         )}
-                    </tbody>
-                </table>
+                    </div>
+                </div>
             </div>
-            <div className="product-container">
-                <div className="product-title">Documents</div>
-                <table className="product-table">
-                    <thead>
-                        <tr className="table-row">
-                            <th className="table-head">Document</th>
-                            <th className="table-head">Status</th>
-                            <th className="table-head">Last Action</th>
-                            <th className="table-head">Updated By</th>
-                            <th className="table-head"></th>
-                        </tr>
-                    </thead>
-                    <tbody>
+            <div className="shadow-md mb-4 w-full rounded-t-[2rem]">
+                <div className="flex justify-center items-center text-2xl mt-6 rounded-t-[2rem] bg-slate-300 min-h-20">
+                    Document Overview
+                </div>
+                <div className="">
+                    <div className="bg-gray-200 px-2 py-4">
+                        <div className="grid grid-cols-4 gap-4">
+                            <div className="flex items-center justify-center hover:cursor-default">
+                                Document
+                            </div>
+                            <div className="flex items-center justify-center hover:cursor-default">
+                                Status
+                            </div>
+                            <div className="flex items-center justify-center hover:cursor-default">
+                                Last Action
+                            </div>
+                            <div className="flex items-center justify-center hover:cursor-default">
+                                Updated By
+                            </div>
+                            {/* <div className="table-head"></div> */}
+                        </div>
+                    </div>
+                    <div>
                         {processData.documentList && processData.documentList.map((doc: any, id: number) =>
-                            <tr key={id} className="table-row">
-                                <td className="table-cell">{doc.documentName}</td>
-                                <td className="table-cell">
+                            <div key={id} onClick={() => handleViewDocument(doc)}
+                            className="grid grid-cols-4 gap-4 border-t border-gray-300 py-2 cursor-pointer hover:bg-gray-100">
+                                <div className="p-3 flex items-center justify-center">
+                                    {doc.documentName}
+                                </div>
+                                <div className="p-3 flex items-center justify-center">
                                     <DocumentStatus docStatus={doc.documentStatus} />
-                                </td>
-                                <td className="table-cell">{formatDate(doc.modifiedAt)}</td>
-                                <td className="table-cell">{doc.modifiedBy}</td>
-                                <td className="table-cell"><div className='button-view' onClick={() => handleViewDocument(doc)}>view</div></td>
-                            </tr>
+                                </div>
+                                <div className="p-3 flex items-center justify-center">
+                                    {formatDate(doc.modifiedAt)}
+                                </div>
+                                <div className="p-3 flex items-center justify-center">
+                                    {doc.modifiedBy}
+                                </div>
+                            </div>
                         )}
-                    </tbody>
-                </table>
+                    </div>
+                </div>
             </div>
         </div>
     );

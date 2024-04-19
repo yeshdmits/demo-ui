@@ -1,0 +1,115 @@
+ /* Styles for the entire form */
+ .rjsf {
+     width: 100%;
+     padding: 0;
+     margin: 0;
+     margin-left: 1rem;
+     margin-right: 1rem;
+     margin-top: 10px;
+     border-radius: 5px;
+ }
+
+ /* Styles for the form description */
+ .field-description {
+     margin-bottom: 20px;
+ }
+
+ /* Styles for form fields */
+ .form-group {
+     margin-bottom: 15px;
+ }
+
+ /* Styles for field labels */
+ .control-label {
+     font-weight: bold;
+     margin-bottom: 5px;
+ }
+
+ /* Styles for required indicator */
+ .required {
+     color: red;
+ }
+
+ /* Styles for form inputs */
+ .form-control {
+     width: 100%;
+     padding: 10px;
+     border: 1px solid #ccc;
+     border-radius: 3px;
+ }
+
+ /* Styles for error messages */
+ .text-danger {
+     color: red;
+     list-style: none;
+     font-size: 12px;
+ }
+
+ /* Style for fieldset and its elements */
+
+ /* Apply general styling to the fieldset */
+ fieldset#root {
+     border: 1px solid #ccc;
+     /* Border color of the fieldset */
+     border-radius: 5px;
+     /* Border radius of the fieldset */
+     padding: 20px;
+     /* Padding inside the fieldset */
+     margin-bottom: 20px;
+     /* Margin below the fieldset */
+ }
+
+ /* Style for the fieldset legend */
+ legend#root__title {
+     font-weight: bold;
+     /* Bold font for the legend */
+     margin-bottom: 10px;
+     /* Margin below the legend */
+ }
+
+ /* Style for the fieldset description */
+ p#root__description {
+     margin-bottom: 10px;
+     /* Margin below the description */
+ }
+
+ /* Style for form group */
+ .form-group {
+     margin-bottom: 20px;
+     /* Margin between form groups */
+ }
+
+ /* Style for required label */
+ .form-group .required {
+     color: red;
+     /* Color for the required indicator */
+ }
+
+ /* Style for radio group container */
+ .field-radio-group {
+     margin-top: 10px;
+     /* Margin above the radio group */
+ }
+
+ /* Style for radio button label */
+ .radio label {
+     cursor: pointer;
+     /* Set cursor to pointer on label */
+ }
+
+ /* Style for form control input */
+ .form-control {
+     width: 100%;
+     /* Full width for form control input */
+ }
+
+ /* Style for error messages */
+ .error-detail {
+     margin-top: 5px;
+     /* Margin above the error messages */
+ }
+
+ .error-detail li {
+     color: red;
+     /* Color for the error messages */
+ }

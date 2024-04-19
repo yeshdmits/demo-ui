@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Document, Page } from 'react-pdf';
-import { getDocContent } from "../service/ApiService";
-
+import { getDocContent } from "../../service/ApiService";
+  
 const ViewPdfComponent = (props: any) => {
     const [numPages, setNumPages] = useState(null);
     const [pageNumber] = useState(1);
@@ -24,10 +24,11 @@ const ViewPdfComponent = (props: any) => {
     return (
         <div className="document-pdf">
             {pdfUrl && <Document
+                className="--scale-factor:0.75 !important"
                 file={pdfUrl}
                 onLoadSuccess={onDocumentLoadSuccess}
             >
-                <Page pageNumber={pageNumber} />
+                <Page scale={0.7} pageNumber={pageNumber} />
             </Document>
             }
             <p>Page {pageNumber} of {numPages}</p>

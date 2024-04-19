@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { getToken, fetchToken } from './AuthService';
-// import { CustomError } from '../components/login/ErrorComponent';
+import { CustomError } from '../components/login/ErrorComponent';
 
 
 const createProduct = async () => {
@@ -39,8 +39,6 @@ const getProductList = async () => {
         { headers }
     ).then(response => {
         return response.data
-    }).catch(error => {
-        // throw new CustomError(error.message, error.status);
     });
 };
 
