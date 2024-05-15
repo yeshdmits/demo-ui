@@ -13,6 +13,7 @@ import 'react-pdf/dist/Page/AnnotationLayer.css';
 import ProcessList from './flow/ProcessList';
 import LoginComponent from './components/login/Login';
 import AuthLayout from './components/login/AuthLayout';
+import TicTacToePlus from './game/TicTacToePlus';
 
 pdfjs.GlobalWorkerOptions.workerSrc = new URL(
   'pdfjs-dist/build/pdf.worker.min.js',
@@ -23,6 +24,7 @@ function App() {
   return (
     <HashRouter>
       <Routes>
+        <Route path="/game" element={<TicTacToePlus />} />
         <Route path="/builder" element={<ProcessForm />} />
         <Route path="/builder/form" element={<DisplayJsonFormDialog />} />
         <Route path="/" element={<HelloComponent />} />
