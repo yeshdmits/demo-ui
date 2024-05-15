@@ -16,7 +16,7 @@ const TicTacToeItem = (props: any) => {
 
 
     const handleClick = (key: number, index: number) => {
-        if (!props.active) {
+        if (!props.active || twoDimArr[key][index] !== 0) {
             return;
         }
         let value = props.cross ? 1 : -1;
