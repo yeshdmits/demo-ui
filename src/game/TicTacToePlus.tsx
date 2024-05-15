@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { ReactComponent as Cross } from '../svgs/cross.svg';
 import { ReactComponent as Circle } from '../svgs/circle.svg';
 import TicTacToeItem from "./TicTacToeItem";
